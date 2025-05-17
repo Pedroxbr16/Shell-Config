@@ -128,3 +128,38 @@ fi
 
 echo "✅ Setup finalizado!"
 echo "🔄 Rode: source ~/.bashrc ou reinicie o WSL para aplicar as configurações."
+
+# ===== Zsh Configuração com Powerlevel10k e Plugins =====
+echo "🎨 Configurando Zsh com Powerlevel10k e plugins..."
+
+# Clonar tema Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
+# Definir tema no ~/.zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\\/powerlevel10k"/' ~/.zshrc
+
+# Clonar plugins adicionais
+git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# Garantir que ~/.zshrc existe
+touch ~/.zshrc
+
+# Adicionar plugins ao .zshrc
+if grep -q "^plugins=" ~/.zshrc; then
+  sed -i '/^plugins=/c\\plugins=(git zsh-autosuggestions zsh-syntax-highlighting)' ~/.zshrc
+else
+  echo 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)' >> ~/.zshrc
+fi
+
+
+
+# Ativar Powerlevel10k se não estiver ativado
+if ! grep -q 'source ~/.p10k.zsh' ~/.zshrc; then
+  echo -e '\n[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+fi
+
+echo "✅ Zsh configurado com sucesso!"
+echo "💡 ATENÇÃO: Para ver os ícones corretamente, instale a fonte MesloLGS NF no Windows e selecione ela no Windows Terminal:"
+echo "👉 https://github.com/romkatv/powerlevel10k#manual-font-installation"
+
