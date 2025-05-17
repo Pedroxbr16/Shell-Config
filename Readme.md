@@ -29,13 +29,13 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 2. Dê permissão de execução:
 
    ```bash
-   chmod +x setup-wsl-dev.sh
+   chmod +x config.sh
    ```
 
 3. Execute:
 
    ```bash
-   ./setup-wsl-dev.sh
+   ./config.sh
    ```
 
 4. Insira seu **nome** e **e-mail** quando solicitado para configurar o Git.
