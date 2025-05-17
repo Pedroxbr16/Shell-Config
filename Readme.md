@@ -12,7 +12,7 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 - ✅ MySQL Server
 - ✅ phpMyAdmin
 - ✅ MongoDB + Mongo Express
-- ✅ Zsh + Oh My Zsh
+- ✅ Zsh + Oh My Zsh com tema Powerlevel10k e plugins
 - ✅ Ferramentas de monitoramento e utilitários (`htop`, `neofetch`, `ncdu`, etc.)
 - ✅ Exibição automática de informações do sistema ao abrir o terminal (`neofetch`)
 
@@ -23,7 +23,7 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 1. Faça o download do script: 
 
    ```bash
-   wget https://raw.githubusercontent.com/Pedroxbr16/Shell-Config/main/setup-wsl-dev.sh
+   wget https://raw.githubusercontent.com/Pedroxbr16/Shell-Config/main/config.sh
    ```
 
 2. Dê permissão de execução:
@@ -68,6 +68,14 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
   exec zsh
   ```
 
+- Para configurar o tema Powerlevel10k:
+  ```bash
+  p10k configure
+  ```
+
+- Para que os ícones funcionem corretamente no terminal, instale a fonte:
+  👉 https://github.com/romkatv/powerlevel10k#manual-font-installation
+
 ---
 
 ## ⚠️ Observações
@@ -99,7 +107,7 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 - MySQL + phpMyAdmin
 - MongoDB + Mongo Express
 - Docker + docker-compose
-- Zsh + Oh My Zsh
+- Zsh + Oh My Zsh + Powerlevel10k
 - Utilitários: `htop`, `ncdu`, `net-tools`, `neofetch`
 
 ---
