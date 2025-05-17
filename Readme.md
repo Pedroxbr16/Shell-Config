@@ -1,71 +1,115 @@
+# ⚙️ Setup de Ambiente para Programação no WSL (Ubuntu)
 
-# Setup de Ambiente para Programação no WSL
+Este script automatiza a instalação e configuração das ferramentas mais comuns para desenvolvimento em **WSL Ubuntu**, incluindo:
 
-Este script automatiza a instalação e configuração das ferramentas mais comuns para programação no WSL Ubuntu, incluindo:
+### 🚀 Funcionalidades:
 
-- Atualização do sistema
-- Git (com configuração global de usuário e e-mail)
-- Node.js LTS + npm
-- Python 3 + pip + pyenv (com instalação e configuração no `.bashrc`)
-- Docker (com adição do usuário ao grupo docker)
-- MySQL Server
-- phpMyAdmin
-- MongoDB (servidor)
-- Mongo Express (interface web para MongoDB via npm)
-- Ferramentas básicas (build-essential, curl, wget, vim, tmux, etc)
+- ✅ Atualização do sistema
+- ✅ Git com configuração global (nome, e-mail e aliases úteis)
+- ✅ Node.js via `nvm` (Node Version Manager)
+- ✅ Python 3 + pip + venv + pyenv com configuração no `.bashrc`
+- ✅ Docker e Docker Compose (usuário no grupo docker)
+- ✅ MySQL Server
+- ✅ phpMyAdmin
+- ✅ MongoDB + Mongo Express
+- ✅ Zsh + Oh My Zsh
+- ✅ Ferramentas de monitoramento e utilitários (`htop`, `neofetch`, `ncdu`, etc.)
+- ✅ Exibição automática de informações do sistema ao abrir o terminal (`neofetch`)
 
 ---
 
-## Como usar
+## 🧪 Como usar
 
-1. Faça download do script `setup-wsl.sh`.
-
-2. Dê permissão para execução:
+1. Faça o download do script: 
 
    ```bash
-   chmod +x setup-wsl.sh
+   wget https://raw.githubusercontent.com/Pedroxbr16/Shell-Config/main/setup-wsl-dev.sh
    ```
 
-3. Execute o script:
+2. Dê permissão de execução:
 
    ```bash
-   ./setup-wsl.sh
+   chmod +x setup-wsl-dev.sh
    ```
 
-4. Durante a execução, informe seu nome e e-mail para configurar o Git.
+3. Execute:
 
-5. Ao final, **reinicie o WSL** para que as configurações do grupo `docker` e do `pyenv` entrem em vigor.
+   ```bash
+   ./setup-wsl-dev.sh
+   ```
 
-6. Opcionalmente, você pode rodar:
+4. Insira seu **nome** e **e-mail** quando solicitado para configurar o Git.
+
+5. Ao final, execute:
 
    ```bash
    source ~/.bashrc
    ```
 
-   para aplicar as configurações do pyenv sem reiniciar.
+   ou reinicie o WSL para aplicar todas as configurações (docker, pyenv, nvm, zsh etc).
 
 ---
 
-## Observações
+## 💡 Dicas pós-instalação
 
-- O script instala o phpMyAdmin mas não configura o servidor web. Você precisará configurar Apache ou Nginx para servir o phpMyAdmin em seu ambiente.
+- Para instalar o Node LTS:
+  ```bash
+  nvm install --lts
+  ```
 
-- O Mongo Express é instalado globalmente via npm. Para iniciar, basta rodar:
-
+- Para usar o Mongo Express (interface web para o MongoDB):
   ```bash
   mongo-express
   ```
 
-- O Docker está instalado e seu usuário foi adicionado ao grupo `docker` para que você possa rodar comandos sem `sudo`.
+- Se o Zsh não for ativado automaticamente:
+  ```bash
+  chsh -s $(which zsh)
+  exec zsh
+  ```
 
 ---
 
-## Suporte
+## ⚠️ Observações
 
-Caso tenha dúvidas ou precise de ajuda para customizar o script, configurar servidores web ou outras ferramentas, abra uma issue ou entre em contato.
+- O phpMyAdmin é instalado, mas você precisa configurar o Apache ou Nginx para acessá-lo via navegador.
+- O MongoDB e o MySQL são iniciados automaticamente como serviços.
+- O Docker é instalado e configurado para rodar **sem sudo**, mas é necessário reiniciar ou rodar `newgrp docker` após o script.
 
 ---
 
-## Licença
+## 🛠 Aliases Git criados
+
+| Comando     | Equivale a              |
+|-------------|-------------------------|
+| `git s`     | `git status`            |
+| `git co`    | `git checkout`          |
+| `git br`    | `git branch`            |
+| `git cm`    | `git commit`            |
+| `git lg`    | `git log --oneline --graph --all` |
+
+---
+
+## 🧩 Ferramentas instaladas
+
+- Git
+- Curl / Wget / Vim / Tmux / unzip
+- Python 3 / pip / venv / pyenv
+- Node.js via `nvm`
+- MySQL + phpMyAdmin
+- MongoDB + Mongo Express
+- Docker + docker-compose
+- Zsh + Oh My Zsh
+- Utilitários: `htop`, `ncdu`, `net-tools`, `neofetch`
+
+---
+
+## 📬 Suporte
+
+Abra uma issue no repositório ou entre em contato para sugestões e melhorias.
+
+---
+
+## 📄 Licença
 
 Este script é gratuito e livre para uso pessoal e comercial.
