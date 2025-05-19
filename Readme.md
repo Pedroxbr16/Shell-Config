@@ -6,8 +6,8 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 
 - ✅ Atualização do sistema
 - ✅ Git com configuração global (nome, e-mail e aliases úteis)
-- ✅ Node.js via `nvm` (Node Version Manager)
-- ✅ Python 3 + pip + venv + pyenv com configuração no `.bashrc`
+- ✅ Node.js via `nvm` (Node Version Manager) configurado no Zsh
+- ✅ Python 3 + pip + venv + pyenv configurado no Zsh
 - ✅ Docker e Docker Compose (usuário no grupo docker)
 - ✅ MySQL Server
 - ✅ phpMyAdmin
@@ -20,7 +20,7 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
 
 ## 🧪 Como usar
 
-1. Faça o download do script: 
+1. Faça o download do script:
 
    ```bash
    wget https://raw.githubusercontent.com/Pedroxbr16/Shell-Config/main/config.sh
@@ -38,37 +38,56 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
    ./config.sh
    ```
 
-4. Insira seu **nome** e **e-mail** quando solicitado para configurar o Git.
 
-5. Ao final, execute:
+44. Ao final, execute:
 
    ```bash
-   source ~/.bashrc
+   source ~/.zshrc
    ```
 
    ou reinicie o WSL para aplicar todas as configurações (docker, pyenv, nvm, zsh etc).
 
 ---
 
+## ⚠️ Atenção Importante
+
+- **Não esqueça de alterar as variáveis `GIT_NAME` e `GIT_EMAIL` no script antes de rodar, ou editar depois para refletir seu nome e email reais!**  
+- Se quiser usar outra versão do Node.js, após a instalação rode:
+
+  ```bash
+  nvm install <versão>
+  nvm alias default <versão>
+  ```
+
+- Para personalizar o script, você pode editar diretamente variáveis e comandos dentro dele, conforme suas necessidades (ex: instalar pacotes extras, configurar outras ferramentas).
+
+---
+
 ## 💡 Dicas pós-instalação
 
-- Para instalar o Node LTS:
-  ```bash
-  nvm install --lts
-  ```
+- O script configura o **pyenv** e o **nvm** para carregarem no **Zsh** (`~/.zshrc`).
+- Para que o terminal carregue as configurações corretamente, sempre use o **Zsh** como shell padrão (o script muda com `chsh -s $(which zsh)`).
+- Se o Zsh não for ativado automaticamente, execute:
 
-- Para usar o Mongo Express (interface web para o MongoDB):
-  ```bash
-  mongo-express
-  ```
-
-- Se o Zsh não for ativado automaticamente:
   ```bash
   chsh -s $(which zsh)
   exec zsh
   ```
 
+- Para instalar o Node.js versão 20.14 (configurado como padrão):
+
+  ```bash
+  nvm use
+  ```
+
+- Para usar o Mongo Express (interface web para o MongoDB):
+
+  ```bash
+  mongo-express
+  ```
+
 - Para configurar o tema Powerlevel10k:
+
   ```bash
   p10k configure
   ```
@@ -85,6 +104,7 @@ Para que os ícones e espaçamentos do prompt do Powerlevel10k funcionem correta
 📥 [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 
 Após instalar, configure seu terminal (ex: Windows Terminal) para usar a fonte:
+
 ```
 MesloLGS NF
 ```
@@ -96,6 +116,8 @@ MesloLGS NF
 - O phpMyAdmin é instalado, mas você precisa configurar o Apache ou Nginx para acessá-lo via navegador.
 - O MongoDB e o MySQL são iniciados automaticamente como serviços.
 - O Docker é instalado e configurado para rodar **sem sudo**, mas é necessário reiniciar ou rodar `newgrp docker` após o script.
+- O `neofetch` está configurado para exibir automaticamente tanto no Bash (`~/.bashrc`) quanto no Zsh (`~/.zshrc`), garantindo que você veja as infos do sistema independente do shell.
+- O pyenv e nvm estão configurados no `~/.zshrc`, pois o Zsh é o shell padrão após o script.
 
 ---
 
@@ -113,14 +135,14 @@ MesloLGS NF
 
 ## 🧩 Ferramentas instaladas
 
-- Git
-- Curl / Wget / Vim / Tmux / unzip
-- Python 3 / pip / venv / pyenv
-- Node.js via `nvm`
-- MySQL + phpMyAdmin
-- MongoDB + Mongo Express
-- Docker + docker-compose
-- Zsh + Oh My Zsh + Powerlevel10k
+- Git  
+- Curl / Wget / Vim / Tmux / unzip  
+- Python 3 / pip / venv / pyenv  
+- Node.js via `nvm` (versão 20.14 instalada por padrão)  
+- MySQL + phpMyAdmin  
+- MongoDB + Mongo Express  
+- Docker + docker-compose  
+- Zsh + Oh My Zsh + Powerlevel10k  
 - Utilitários: `htop`, `ncdu`, `net-tools`, `neofetch`
 
 ---
