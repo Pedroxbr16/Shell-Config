@@ -73,8 +73,21 @@ Este script automatiza a instalação e configuração das ferramentas mais comu
   p10k configure
   ```
 
-- Para que os ícones funcionem corretamente no terminal, instale a fonte:
-  👉 https://github.com/romkatv/powerlevel10k#manual-font-installation
+---
+
+## 🔤 Fontes MesloLGS NF (Powerlevel10k)
+
+Para que os ícones e espaçamentos do prompt do Powerlevel10k funcionem corretamente, instale as seguintes fontes no seu **Windows**:
+
+📥 [MesloLGS NF Regular.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)  
+📥 [MesloLGS NF Bold.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)  
+📥 [MesloLGS NF Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)  
+📥 [MesloLGS NF Bold Italic.ttf](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
+
+Após instalar, configure seu terminal (ex: Windows Terminal) para usar a fonte:
+```
+MesloLGS NF
+```
 
 ---
 
