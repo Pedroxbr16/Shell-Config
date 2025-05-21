@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 set -e
@@ -129,6 +128,9 @@ fi
 if ! grep -q 'source ~/.p10k.zsh' ~/.zshrc; then
   echo -e '\n[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
 fi
+
+# Forçar configuração do Powerlevel10k se ainda não estiver configurado
+echo -e '\n# Forçar configuração do Powerlevel10k\n[[ ! -f ~/.p10k.zsh ]] && p10k configure' >> ~/.zshrc
 
 echo "✅ Setup finalizado!"
 echo "🔄 Rode: source ~/.bashrc ou source ~/.zshrc ou reinicie o WSL para aplicar as configurações."
