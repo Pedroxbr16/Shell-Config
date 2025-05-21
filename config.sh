@@ -132,6 +132,23 @@ fi
 # Forçar configuração do Powerlevel10k se ainda não estiver configurado
 echo -e '\n# Forçar configuração do Powerlevel10k\n[[ ! -f ~/.p10k.zsh ]] && p10k configure' >> ~/.zshrc
 
+
+echo "🐳 Instalando Docker Compose manualmente..."
+
+# Criar diretório de plugins do Docker
+mkdir -p ~/.docker/cli-plugins/
+
+# Baixar Docker Compose mais recente (ajuste versão se quiser)
+curl -SL https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+
+# Dar permissão de execução
+chmod +x ~/.docker/cli-plugins/docker-compose
+
+# Verificar instalação
+docker --version
+docker compose version
+
+
 echo "✅ Setup finalizado!"
 echo "🔄 Rode: source ~/.bashrc ou source ~/.zshrc ou reinicie o WSL para aplicar as configurações."
 echo "💡 ATENÇÃO: Para ver os ícones corretamente, instale a fonte MesloLGS NF no Windows e selecione ela no Windows Terminal:"
