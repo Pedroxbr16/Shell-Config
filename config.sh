@@ -49,9 +49,7 @@ echo "⬇️ Instalando NVM (Node Version Manager)…"
 curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
-# shellcheck source=/dev/null
 [ -s "$NVM_DIR/nvm.sh" ]     && \. "$NVM_DIR/nvm.sh"
-# shellcheck source=/dev/null
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 echo "⬇️ Instalando Node.js 20.14 e definindo como padrão..."
@@ -66,7 +64,7 @@ sudo systemctl start mysql
 echo "🔐 Rodando mysql_secure_installation (interativo)…"
 sudo mysql_secure_installation
 
-echo "🌐 Instalando Apache2 e phpMyAdmin…"
+echo "🌐 Instalando Apache2 e phpMyAdmin..."
 sudo apt install -y apache2
 sudo DEBIAN_FRONTEND=noninteractive apt install -y \
   phpmyadmin php-mbstring php-zip php-gd php-json php-curl
@@ -74,7 +72,7 @@ sudo phpenmod mbstring
 sudo a2enconf phpmyadmin
 sudo systemctl reload apache2
 
-echo "🗃️ Instalando MongoDB 6.0…"
+echo "🗃️ Instalando MongoDB 6.0..."
 sudo mkdir -p /etc/apt/keyrings
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc \
   | sudo gpg --dearmor -o /etc/apt/keyrings/mongodb-archive-keyring.gpg
@@ -86,7 +84,7 @@ sudo apt install -y mongodb-org
 sudo systemctl enable mongod
 sudo systemctl start mongod
 
-echo "💻 Instalando mongo-express globalmente…"
+echo "💻 Instalando mongo-express globalmente..."
 sudo npm install -g mongo-express
 
 echo "🐳 Instalando Docker e Docker Compose…"
@@ -126,7 +124,7 @@ fi
 echo "🎨 Instalando Powerlevel10k e plugins Zsh…"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
   "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc
 
 for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
   git clone https://github.com/zsh-users/$plugin.git \
@@ -140,6 +138,14 @@ curl -fsSL \
   https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-linux-x86_64 \
   -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
+
+# ➕ Instalando lazydocker
+echo "⬇️ Instalando lazydocker…"
+curl -Lo lazydocker.tar.gz \
+  "https://github.com/jesseduffield/lazydocker/releases/latest/download/lazydocker_$(uname -s)_$(uname -m).tar.gz"
+tar -xzf lazydocker.tar.gz lazydocker
+sudo mv lazydocker /usr/local/bin/
+rm lazydocker.tar.gz
 
 echo "✅ Setup concluído!"
 echo "🔄 Execute um 'source ~/.bashrc' ou 'source ~/.zshrc', ou reinicie a sessão para aplicar tudo."
